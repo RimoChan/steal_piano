@@ -12,13 +12,13 @@ def _read(path):
 
 def disk_cache(path):
     def w(f):
-        def _f(x):
-            文件名 = f'{x}_{f.__name__}.disk_cache'
+        def _f(*args, **kwargs):
+            文件名 = f'{args[1]}_{f.__name__}.disk_cache'
             p = Path(path) / 文件名
             if p.is_file():
                 return _read(str(p))
             else:
-                a = f(x)
+                a = f(*args, **kwargs)
                 with open(p, 'wb') as fl:
                     fl.write(pickle.dumps(a))
                 return a
