@@ -61,7 +61,7 @@ def ember(token, 我, days=365, save_path='1.png'):
     ...
 ```
 
-- `token`: 你要自己去GitHub设置的Personal access tokens里注册一个，然后复制回来。(不需要加权限，用来提高GitHub访问频率的限制)
+- `token`: 你要自己去GitHub设置的[Personal access tokens](https://github.com/settings/tokens)里注册一个，然后复制回来。(不需要加权限，用来提高GitHub访问频率的限制)
 
 - `我`: 你的名字，比如RimoChan。
 

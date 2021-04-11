@@ -6,7 +6,7 @@ import networkx as nx
 from github import Github
 import matplotlib.pyplot as plt
 
-from cache import disk_cache
+from rimo_utils.cache import disk_cache
 
 
 g = None
