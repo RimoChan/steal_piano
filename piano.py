@@ -42,8 +42,10 @@ def ember(token, 我, days=365, save_path='1.png'):
             continue
         琴.setdefault(i.user.login, {'直接': 0, '间接': []})['直接'] += 1
         黄泉 = [j for j in 黄泉 if i.starred_at-timedelta(days=3) < j.starred_at]
+        v = set()
         for j in 黄泉:
-            if i.user.login in follower(j.user.login):
+            if i.user.login in follower(j.user.login) and j.user.login not in v:
+                v.add(j.user.login)
                 琴[j.user.login]['间接'].append(i.user.login)
         黄泉.append(i)
 
