@@ -6,18 +6,18 @@ import networkx as nx
 from github import Github
 import matplotlib.pyplot as plt
 
-from rimo_utils.cache import disk_cache
+from rimo_storage import cache
 
 
 g = None
 
 
-@disk_cache('./dc')
+@cache.disk_cache(path='_dc_follower', serialize='pickle')
 def follower(人):
     return set([i.login for i in g.get_user(人).get_followers()])
 
 
-@disk_cache('./dc')
+@cache.disk_cache(path='_dc_星表', serialize='pickle')
 def 星表(人):
     li = []
     for r in tqdm(g.get_user(人).get_repos()):
@@ -58,5 +58,5 @@ def ember(token, 我, days=365, save_path='1.png'):
 
     d = dict(G.degree)
     plt.figure(1, figsize=(23, 23)) 
-    nx.draw(G, nodelist=d.keys(), node_size=[v * 75 for v in d.values()], with_labels=True)
+    nx.draw_kamada_kawai(G, nodelist=d.keys(), node_size=[v * 75 for v in d.values()], with_labels=True)
     plt.savefig(save_path)
