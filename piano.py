@@ -50,7 +50,7 @@ def ember(token, 我, days=365, save_path='1.png'):
         黄泉.append(i)
 
     G = nx.Graph()
-    for k, v in sorted(琴.items(), key=lambda x: len(x[1]['间接']))[-25:]:
+    for k, v in sorted(琴.items(), key=lambda x: x[1]['直接'] + len(x[1]['间接']))[-25:]:
         print(k, '直接:', v['直接'], '间接:', len(v['间接']))
         G.add_edge(k, 我)
         for i in v['间接']:
